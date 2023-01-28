@@ -43,4 +43,4 @@ tests = [
 for petrolpumps, solution in tests:
     sol = Solution.truck_tour(petrolpumps)
     print( sol )
-    # assert sol == solution
+    assert sol == solution
