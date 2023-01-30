@@ -15,6 +15,24 @@ class Solution:
                 gas_tank = 0
         return start
 
+class Solution1:
+    @timeit
+    def truckTour(petrolpumps):
+        gas_tank = 0
+        start = 0
+
+        for i, [gas, km] in enumerate(petrolpumps):
+            # add fuel to tank, "travel" to next station and subtract gas
+            gas_tank += gas - km
+            # check if tank had enough fuel
+            if gas_tank < 0:
+                # if not, start at next station
+                start = i + 1
+                gas_tank = 0
+
+        return start
+
+
 #testing
 tests = [
     (
