@@ -38,10 +38,43 @@ class Solution:
             head2.next = Solution.mergeLists(head1, head2.next)
             return head2
 
+class Solution1:
+    def mergeLists(head1, head2):
+        head = None
+        current = None
+
+        if head1 is None:
+            return head2
+        elif head2 is None:
+            return head1
+
+        while head1 and head2:
+            if head1.data < head2.data:
+                if head is None:
+                    head = head1
+                    current = head
+                else:
+                    current.next = head1
+                    current = current.next
+                head1 = head1.next
+            else:
+                if head is None:
+                    head = head2
+                    current = head
+                else:
+                    current.next = head2
+                    current = current.next
+                head2 = head2.next
+        else:
+            if head1:
+                current.next = head1
+            elif head2:
+                current.next = head2
+
+        return head
+
+
 # testing
-
-
-
 tests = [
     (
         LNode.LinkedList([1, 2, 3]),
@@ -56,7 +89,7 @@ tests = [
 ]
 
 for head1, head2, solution in tests:
-    sol = Solution.mergeLists(head1, head2)
+    sol = Solution1.mergeLists(head1, head2)
     p_sol = []
     while sol.next:
         # print(sol.data)
